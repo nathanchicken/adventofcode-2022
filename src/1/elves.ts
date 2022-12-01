@@ -2,6 +2,9 @@ import raw from './input'
 
 let index = 0
 
+/**
+ * Process raw elves into an object
+ */
 export const elves = raw.reduce((elves: any, row: undefined | number) => {
   if (row === undefined) {
     index += 1
@@ -11,7 +14,8 @@ export const elves = raw.reduce((elves: any, row: undefined | number) => {
   if (!elves[index]) {
     elves[index] = {
       group: [],
-      total: 0
+      total: 0,
+      key: index
     }
   }
 
@@ -20,5 +24,3 @@ export const elves = raw.reduce((elves: any, row: undefined | number) => {
 
   return elves
 }, {})
-
-

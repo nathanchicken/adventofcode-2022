@@ -1,17 +1,15 @@
 import { elves } from './1/elves'
 
-let max = 0
-const elvesArray = Object.values(elves) as Array<{
+interface Elf {
+  // Total calroies held by elf
   total: number
+  // The original set of snacks
   group: Array<number>
-}>
+  // The index from the original input, eg 0 means first original elf
+  index: number
+}
 
-
-elvesArray.forEach(({ total }) => {
-  if (total > max) {
-    max = total
-  }
-})
+const elvesArray = Object.values(elves) as Array<Elf>
 
 // Elves sorted by calorie total:
 elvesArray.sort(({ total: a }, { total: b }) => {
@@ -20,5 +18,8 @@ elvesArray.sort(({ total: a }, { total: b }) => {
 
 // First 3 elves
 const [a, b, c] = elvesArray.map(({ total }) => total)
+
+console.log(`Max elf has ${a} calories`)
+
 // Total of first three elves:
-console.log(a + b + c)
+console.log(`Max of first three elves: ${a + b + c}`)
